@@ -1,0 +1,29 @@
+---
+layout: post
+title:  "Numba and Stats[Part 2]"
+categories: jekyll update
+---
+
+As I mentioned in my previous blog post, the next goal for me was to add in the required benchmark tests. Out of the different benchmarking tools available for python,  I decided to use asv(airspeed velocity) for the project. I made this choice while keeping a variety of things in mind. Here are some of the salient reasons for choosing this library:
+
+[**Link to my pull request**](https://github.com/arviz-devs/arviz/pull/710)
+
+* It allows the user to create different environments while testing, and this was extremely useful in my case as I had to check my code with and without numba.
+
+* It benchmarks the projects over its lifetime over a series of commits and presents it in a viewable website on your localhost.
+
+* It is fairly stable. 
+
+## Writing Benchmarks:
+
+My initial plan was to add the modified arviz methods directly into benchmarks.py and run the benchmark tests. However, for some reason, importing arviz directly into the main code let to build failing to compiled. Instead, I decided to include only the modified methods which I had written to be included in the arviz methods, in the benchmark tests. 
+
+Another important task was to add a function to allow the user to enable or disable numba.
+
+
+### Next Step:
+
+My pull request is almost complete( need to fix a few pylint errors) and up for review. My next step is to work on arviz plots.
+
+
+
