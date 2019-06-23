@@ -20,6 +20,8 @@ My initial plan was to add the modified arviz methods directly into benchmarks.p
 
 Another important task was to add a function to allow the user to enable or disable numba.
 
+**Benchmark results on my machine**
+![Image](https://user-images.githubusercontent.com/29407246/59968430-79d1d980-9557-11e9-8f36-fc1551269485.png)
 
 ### Next Step:
 
