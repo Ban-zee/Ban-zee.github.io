@@ -1,0 +1,58 @@
+---
+layout: post
+title:  "Numba and Plots"
+categories: jekyll update
+---
+
+
+
+It has been some time since I gave you any updates on my Numba project, so here is the post. The first coding phase of GSoC 19 has ended, and in fact, we are already a week into the second phase. By the way, I have successfully passed the first evaluation of GSoC 2019..yay! So now, time for the update.
+
+## Plots
+
+As mentioned in my previous blog post, the next step of my project is to work on [`arviz.plots`](https://arviz-devs.github.io/arviz/api.html#plots). Just like with stats, the first thing to do was profiling every single plot via [line_profiler](https://github.com/rkern/line_profiler). The best thing about working on plots is that the majority of them are based on [`plot_kde`](https://arviz-devs.github.io/arviz/generated/arviz.plot_kde.html#arviz.plot_kde), which can be optimised substantially using numba. 
+
+
+**`plot_kde`**
+
+Here are the notebooks associated with [plots](https://github.com/arviz-devs/arviz/blob/620301036566e5780be25f3b91e314984feb4474/Plots.ipynb) and [plot_utils](https://github.com/arviz-devs/arviz/blob/a2303dd7864130b5e16d849ccb5bc0ffa85961e6/plot-utils.ipynb). As you all can see from the notebooks, `plot_kde` (*mainly `_fast_kde_`*) is the main bottleneck of the following
+
+* [`plot_dist`](https://arviz-devs.github.io/arviz/generated/arviz.plot_dist.html#arviz.plot_dist)
+
+* [`plot_energy`](https://arviz-devs.github.io/arviz/generated/arviz.plot_energy.html#arviz.plot_energy)
+
+* [`plot_joint`](https://arviz-devs.github.io/arviz/generated/arviz.plot_joint.html#arviz.plot_joint)
+
+* [`plot_pair`](https://arviz-devs.github.io/arviz/generated/arviz.plot_pair.html#arviz.plot_pair) ***only partially***
+
+* [`plot_ppc`](https://arviz-devs.github.io/arviz/generated/arviz.plot_ppc.html#arviz.plot_ppc) ***only partially***
+
+* [`plot_violin`](https://arviz-devs.github.io/arviz/generated/arviz.plot_violin.html#arviz.plot_violin)
+
+Optimising `plot_kde` can improve the above-mentioned methods significantly.
+
+
+**`plot_khat`**
+
+The main bottleneck is ax.scatter which unfortunately is not compatible with Numba.
+
+**`parallel_plot`**
+
+The bottleneck is ax.plot which is not compatible with Numba.
+
+**`plot_utils`**
+
+Even though `plot_util` methods are not the major bottlenecks for the plots, I still improved a few of the more demanding methods such as `xarray_var_iter`(which in-turn speeds up `xarray_to_ndarray`. 
+
+**`plot_autocorr`**
+
+The bottlenecks here once again are matplotlib functions which cannot be improved using Numba
+
+## Next Step
+
+I need to work on the remaining few plots and write the required tests. I have also been asked by one of my mentors to look into precompiling numba functions. This task is something new for me and looks like it is going to be fun :). Plus need to keep fixing the bugs which pop up as a result of my previous pull requests. I will update you all soon !!
+
+
+
+
+
