@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "Second Evaluation"
+categories: jekyll update
+---
+
+So here I am again, gearing up for my second GSoC evaluations. I guess this quote from Albert Einstein perfectly relays my experience:
+
+>>“When you are courting a nice girl an hour seems like a second. When you sit on a red-hot cinder, a second seems like an hour. That's relativity.”
+
+I can say without any doubt that my experience with ArviZ has been akin to the former, as I still find it hard to believe that it has been almost two months since the Coding Period started. The learning curve for me during this time has been exponential, and I have a much better knowledge of different open source tools and am much more comfortable with python than before.
+
+### Progress Update
+
+The time following my previous blog post was spent mainly on improving the remaining plots and learning more about Numba AOT and wheel. I also managed to speed up the `_fast_kde_2d` by a significant amount, which also resulted in the other plots gaining a substantial speedup.  I had to write the benchmark tests for the new methods as well along with the required tests. Here is the result of the benchmark run:
+
+**Benchmark results on my machine**
+![Image](https://user-images.githubusercontent.com/29407246/61589485-1b386380-abc8-11e9-89d6-1bda4574f7de.png)
+
+
+As you all can see, I was able to gain a speedup of almost 50% and 28% with `_fast_kde` and `_fast_kde_2d` respectively. My [pull request](https://github.com/arviz-devs/arviz/pull/742) for the same is ready and up for review.
+
+### Next Step
+My next plan of action is to work on `arviz.data` and work on Numba AOT compilations.Plus need to keep fixing the bugs which pop up as a result of my previous pull requests and improve the benchmark tests. I will update you all soon !! Farewell.
