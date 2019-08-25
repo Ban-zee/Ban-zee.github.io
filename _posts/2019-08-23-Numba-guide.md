@@ -55,10 +55,7 @@ As mentioned previously, numba is a reasonably heavy dependency. A simple altern
 
 * `PYBIN=/opt/python/cp36-cp36m/bin`
 
-* ```
-for PYBIN in /opt/python/*/bin; do
-    "${PYBIN}/pip" wheel /io/ -w wheelhouse/
-done```
+* ```for PYBIN in /opt/python/*/bin; do"${PYBIN}/pip" wheel /io/ -w wheelhouse/done```
 
 * The manylinux wheel will be available in the wheelhouse directory.
 
