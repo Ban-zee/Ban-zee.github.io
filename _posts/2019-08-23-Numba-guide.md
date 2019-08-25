@@ -76,3 +76,10 @@ print(svar(data,ddof=0,axis=0))
 ```
 
 The variance methods in the `stats_utils` will be replaced by these precompiled methods shortly.
+
+# Acknowledgement
+
+Before this project, my programming experience was limited to writing small python scripts from time to time. This was a first attempt on working collectively on a project as a result of which I'm more familiar with programming collaboratively with others. From this project, I also learned a lot beyond programming skills, such as how to write a proposal, how is a Python package structured and how to build documentation. Working on a Python package gives me a deeper understand and encourages me to take one step further. Instead of installing a package and simply using it as instructed, now I would also like to look at the source code and maybe even customize it for my own requirements.
+
+I would like to thank my mentors [**Ravin Kumar**](https://github.com/canyon289), [**Colin Carrol**](https://colindcarroll.com/)
+for helping me throughout this project. Special thanks to [**Osvaldo Martin**](https://github.com/aloctavodia) and [**Ari Hartikainen**](https://github.com/ahartikainen) as well. It was a pleasure working with you all.
